@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+
+html,
+body {
+  @apply
+    bg-[#181A20]
+    bg-repeat-x
+    bg-[url('/pattern-top.svg'),url('/pattern_button.svg'),radial-gradient(102.36%_25%_at_50%_100%,rgba(153,85,255,0.5)_0%,rgba(153,85,255,0)_100%),radial-gradient(102.36%_100%_at_50%_0%,rgba(153,85,255,0.5)_0%,rgba(24,26,32,0.5)_100%)]
+    bg-[length:auto_50%,auto_50%,100%_100%,100%_100%]
+    bg-[position:top,bottom,center,center];
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}

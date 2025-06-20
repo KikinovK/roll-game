@@ -1,9 +1,18 @@
-import './index.css'
+import GameBoard from './components/Board/GameBoard';
+import './index.css';
 
 const App = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      Roll Craft Game
+    <div className="
+        relative
+        flex
+        flex-col
+        items-center
+        justify-center
+        min-h-screen
+      "
+    >
+      <GameBoard />
     </div>
   )
 }
