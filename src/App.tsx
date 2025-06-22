@@ -15,15 +15,21 @@ const App = () => {
     const [lastUsed, setLastUsed] = useState<number>(Date.now());
     const [timeLeft, setTimeLeft] = useState(ROLL_RESTORE_TIME);
 
+    const [tokenPosition, setTokenPosition] = useState(0);
+
    const handleRoll = () => {
     setRolling(true);
   };
 
-  const handleRollEnd = (value: number) => {
+  const handleRollEnd = async (value: number) => {
     setRolling(false);
     setRolls((prev) => Math.max(0, prev - 1));
     setLastUsed(Date.now());
-    console.log('Result:', value);
+
+    for (let i = 1; i <= value; i++) {
+      await new Promise((res) => setTimeout(res, 600));
+      setTokenPosition((prev) => (prev + 1) % 20);
+    }
   };
 
   return (
@@ -38,14 +44,14 @@ const App = () => {
         timeLeft={timeLeft}
         setTimeLeft={setTimeLeft}
       />
-      <GameBoard >
+      <GameBoard tokenPosition={tokenPosition}>
         <Dice isRolling={rolling} onRollEnd={handleRollEnd} />
       </GameBoard>
       <AddRoolsPanel
         rolls={rolls}
         onAddRoll={setRolls}
       />
-      <Button onClick={handleRoll} disabled={rolling}>Roll</Button>
+      <Button onClick={handleRoll} disabled={rolling || rolls === 0}>Roll</Button>
       <Button variant="outline" size="sm">How to Play?</Button>
       <HomeIndicator />
     </div>
