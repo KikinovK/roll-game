@@ -48,6 +48,7 @@ const RollIndicator = ({
 
   useEffect(() => {
     if (rolls >= MAX_ROLLS) {
+      setTimeLeft(ROLL_RESTORE_TIME);
       return;
     }
     const interval = setInterval(() => {

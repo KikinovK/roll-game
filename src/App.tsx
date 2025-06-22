@@ -4,9 +4,10 @@ import Dice from './components/Dice/Dice';
 import Button from './components/ui/Button';
 import './index.css';
 import RollIndicator from './components/RollIndicator/RollIndicator';
-import Title from './components/ui/title';
 import { MAX_ROLLS, ROLL_RESTORE_TIME } from './lib/constant';
 import HomeIndicator from './components/ui/HomeIndicator';
+import AddRoolsPanel from './components/AddRoolsPanel/AddRoolsPanel';
+import Title from './components/ui/Title';
 
 const App = () => {
     const [rolling, setRolling] = useState(false);
@@ -26,7 +27,7 @@ const App = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen gap-8 px-4"
+    <div className="relative flex flex-col items-center justify-center min-h-screen gap-8 px-4 pt-8"
     >
       <Title>Roll Craft</Title>
       <RollIndicator
@@ -40,6 +41,10 @@ const App = () => {
       <GameBoard >
         <Dice isRolling={rolling} onRollEnd={handleRollEnd} />
       </GameBoard>
+      <AddRoolsPanel
+        rolls={rolls}
+        onAddRoll={setRolls}
+      />
       <Button onClick={handleRoll} disabled={rolling}>Roll</Button>
       <Button variant="outline" size="sm">How to Play?</Button>
       <HomeIndicator />

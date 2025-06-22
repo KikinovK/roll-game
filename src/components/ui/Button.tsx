@@ -1,8 +1,8 @@
 import type { FC, ButtonHTMLAttributes } from 'react';
 import clsx from 'clsx';
 
-type ButtonSize = 'sm' | 'md';
-type ButtonVariant = 'primary' | 'outline';
+type ButtonSize = 'sm' | 'md' | 'icon';
+type ButtonVariant = 'primary' | 'outline' | 'circle';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
@@ -45,6 +45,10 @@ const Button: FC<ButtonProps> = ({
       font-extrabold font-sans
       align-bottom
     `,
+    icon: `
+      w-6
+      h-6
+    `
   };
 
   const variants: Record<ButtonVariant, string> = {
@@ -61,6 +65,9 @@ const Button: FC<ButtonProps> = ({
       bg-transparent
       hover:text-white hover:border-white
     `,
+    circle: `
+      rounded-full
+    `
   };
 
   return (
