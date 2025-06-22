@@ -1,14 +1,17 @@
 import { cells } from "../../lib/cells";
 import CellComponent from "../Cell/Cell";
 
-const GameBoard = () => {
+type GameBoardProps = {
+  children: React.ReactNode;
+};
+
+const GameBoard = ({ children }: GameBoardProps) => {
   return (
     <div className="grid grid-cols-6 grid-rows-6 gap-[2px] w-[min(80vw,500px)] aspect-square">
       <div
-        key="center"
-        className="col-start-2 row-start-2 col-span-4 row-span-4 bg-white rounded-lg border-4 border-indigo-400 flex items-center justify-center text-xl font-bold"
+        className="col-start-2 row-start-2 col-span-4 row-span-4   flex items-center justify-center text-xl font-bold overflow-hidden"
       >
-        CENTER
+        {children}
       </div>
       {cells.map((cell) => (
         <div
