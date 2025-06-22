@@ -21,7 +21,7 @@ const Button: FC<ButtonProps> = ({
     items-center
     justify-center
     font-semibold
-    rounded
+    rounded-lg
     transition-colors
     disabled:opacity-50
     disabled:pointer-events-none
@@ -37,7 +37,6 @@ const Button: FC<ButtonProps> = ({
       border
       text-[14px] leading-[100%] text-center
       font-bold font-sans
-      rounded-[6px]
     `,
     md: `
       w-[min(80vw,500px)]
@@ -45,7 +44,6 @@ const Button: FC<ButtonProps> = ({
       text-[18px] leading-[100%] tracking-[0%]
       font-extrabold font-sans
       align-bottom
-      rounded-[6px]
     `,
   };
 
