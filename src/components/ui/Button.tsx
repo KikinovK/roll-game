@@ -1,4 +1,4 @@
-import type { FC, ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import clsx from 'clsx';
 
 type ButtonSize = 'sm' | 'md' | 'icon';
@@ -9,13 +9,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
 }
 
-const Button: FC<ButtonProps> = ({
+const Button = ({
   children,
   size = 'md',
   variant = 'primary',
   className,
   ...props
-}) => {
+}: ButtonProps) => {
   const base = `
     inline-flex
     items-center

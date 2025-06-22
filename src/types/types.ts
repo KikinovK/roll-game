@@ -11,7 +11,7 @@ export type CellType =
   | 'box'
   | 'unknown';
 
-export type CellState = 'default' | 'active' | 'highlighted' | 'disabled';
+export type CellState = 'default' | 'active';
 
 export interface Cell {
   id: number;

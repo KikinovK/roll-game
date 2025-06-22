@@ -16,6 +16,7 @@ const App = () => {
     const [timeLeft, setTimeLeft] = useState(ROLL_RESTORE_TIME);
 
     const [tokenPosition, setTokenPosition] = useState(0);
+    const [finalPosition, setFinalPosition] = useState<number | null>(null);
 
    const handleRoll = () => {
     setRolling(true);
@@ -25,11 +26,17 @@ const App = () => {
     setRolling(false);
     setRolls((prev) => Math.max(0, prev - 1));
     setLastUsed(Date.now());
+    setFinalPosition(null);
+
+     let next = tokenPosition;
 
     for (let i = 1; i <= value; i++) {
       await new Promise((res) => setTimeout(res, 600));
-      setTokenPosition((prev) => (prev + 1) % 20);
+      next = (next + 1) % 20;
+      setTokenPosition(next);
     }
+
+    setFinalPosition(next);
   };
 
   return (
@@ -44,7 +51,7 @@ const App = () => {
         timeLeft={timeLeft}
         setTimeLeft={setTimeLeft}
       />
-      <GameBoard tokenPosition={tokenPosition}>
+      <GameBoard tokenPosition={tokenPosition} finalPosition={finalPosition}>
         <Dice isRolling={rolling} onRollEnd={handleRollEnd} />
       </GameBoard>
       <AddRoolsPanel
